@@ -10,3 +10,12 @@ license = "Apache 2.0"
 keywords = ["utility", "lodash", "collections", "helpers"]
 categories = ["development-tools::build-utils"]
 authors = ["rocketnozzle.io"]
+
+exclude = [
+    "tests/*",
+    "examples/*",
+    "benches/*",
+    "test_data/*",
+    ".github/*",
+    "*.rs.bak",
+]
