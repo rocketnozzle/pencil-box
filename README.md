@@ -1,4 +1,4 @@
-# Chunker
+# Pencil-Box
 
 A simple and efficient Rust utility to split slices into fixed-size chunks, returning owned `Vec<T>` chunks.
 
@@ -10,17 +10,17 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-chunker = "0.1.0"
+pencil-box = "0.1.1"
 ```
 
-> Replace `"0.1.0"` with the latest version from [crates.io](https://crates.io/crates/chunker)
+> Replace `"0.1.0"` with the latest version from [crates.io](https://crates.io/crates/pencil-box)
 
 ---
 
 ## 🚀 Usage
 
 ```rust
-use chunker::chunk;
+use pencil_box::chunk;
 
 fn main() {
     let data = vec![1, 2, 3, 4, 5];
@@ -58,9 +58,9 @@ The implementation is covered by comprehensive unit tests, including:
 - ✅ Enums (e.g., `Status::Ok`, `Status::Error`)
 - ✅ Nested collections (e.g., `Vec<Vec<T>>`)
 - ✅ Edge cases:
-    - Empty input
-    - `chunk_size == 0` (returns error)
-    - `chunk_size >= input.len()` (returns single chunk)
+  - Empty input
+  - `chunk_size == 0` (returns error)
+  - `chunk_size >= input.len()` (returns single chunk)
 
 To run tests:
 
@@ -82,6 +82,7 @@ cargo test
 
 This project is dual-licensed under either:
 
+- [MIT](LICENSE-MIT) OR
 - [Apache 2.0](LICENSE-APACHE)
 
 You may freely choose either license.
@@ -94,3 +95,8 @@ Contributions, bug reports, and feature requests are welcome.
 Please open an issue or submit a pull request.
 
 ---
+
+## 🌐 Links
+
+- [Crates.io](https://github.com/rocketnozzle/pencil-box)
+- [Repository](https://github.com/rocketnozzle/pencil-box)
