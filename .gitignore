@@ -2,6 +2,9 @@
 /target/
 /debug/
 
+# Benchmark files
+/benches/
+
 # Rust backup files
 **/*.rs.bk
 
