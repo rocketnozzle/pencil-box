@@ -1,6 +1,6 @@
 [package]
 name = "pencil-box"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "A versatile Rust utility library, inspired by JavaScript's Lodash, providing common helper functions for collections, strings, numbers, and more, with no external dependencies."
 readme = "README.md"
@@ -19,3 +19,9 @@ exclude = [
     ".github/*",
     "*.rs.bak",
 ]
+
+[dependencies]
+ahash = "0.8.12"
+
+[dev-dependencies]
+rand = "0.8"
