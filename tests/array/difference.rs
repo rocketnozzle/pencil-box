@@ -33,10 +33,10 @@ mod tests {
         assert_both_equal(input.clone(), vec![], input);
     }
 
-    /// Tests integer comparison with overlapping values.
+    /// Tests integer comparison with overlapping values between `to_compare` and `others`.
     ///
     /// # Expected
-    /// Excludes matching values from `others`.
+    /// Removes all integers in `others` from `to_compare`.
     #[test]
     fn test_with_integers() {
         let to_compare = vec![1, 2, 3, 4];
@@ -49,7 +49,7 @@ mod tests {
     /// Tests string comparison using owned `String` values.
     ///
     /// # Expected
-    /// Returns only non-overlapping strings.
+    /// Returns strings from `to_compare` that are not present in `others`.
     #[test]
     fn test_with_strings() {
         let to_compare = vec!["a".to_string(), "b".to_string(), "c".to_string()];
@@ -58,10 +58,10 @@ mod tests {
         assert_both_equal(to_compare, vec![&skip], expected);
     }
 
-    /// Tests with string slices (`&str`).
+    /// Tests string comparison using `&str` slices.
     ///
     /// # Expected
-    /// Same behavior as with owned `String`.
+    /// Filters out matching string slices and preserves the rest.
     #[test]
     fn test_with_str_refs() {
         let to_compare = vec!["x", "y", "z"];
@@ -70,10 +70,10 @@ mod tests {
         assert_both_equal(to_compare, vec![&skip], expected);
     }
 
-    /// Tests boolean filtering.
+    /// Tests boolean value filtering.
     ///
     /// # Expected
-    /// Returns only unmatched boolean values.
+    /// Removes `false` if present in `others`; retains unmatched values.
     #[test]
     fn test_with_bools() {
         let to_compare = vec![true, false];
@@ -82,10 +82,10 @@ mod tests {
         assert_both_equal(to_compare, vec![&skip], expected);
     }
 
-    /// Tests floats using a safe wrapper around `f64`.
+    /// Tests floating-point values using a hash-safe wrapper.
     ///
-    /// # Notes
-    /// `f64` does not implement `Hash` by default. We use a simple wrapper.
+    /// # Expected
+    /// Removes wrapped float values present in `others`.
     #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
     struct HashableF64(f64);
 
@@ -104,10 +104,10 @@ mod tests {
         assert_both_equal(to_compare, vec![&skip], expected);
     }
 
-    /// Tests custom struct comparison.
+    /// Tests the case with custom structs that implement `Eq`, `Hash`, and `Clone`.
     ///
     /// # Expected
-    /// Returns only unique `MyStruct` values not found in `others`.
+    /// Returns only struct instances not found in `others`.
     #[derive(Debug, Clone, Eq, PartialEq, Hash)]
     struct MyStruct {
         id: u32,
@@ -134,10 +134,10 @@ mod tests {
         assert_both_equal(to_compare, vec![&skip], expected);
     }
 
-    /// Tests custom enum comparison.
+    /// Tests custom enums with multiple variants.
     ///
     /// # Expected
-    /// Filters out the matching enum variant.
+    /// Filters out matching enum variants from the comparison set.
     #[derive(Debug, Clone, Eq, PartialEq, Hash)]
     enum MyEnum {
         A,

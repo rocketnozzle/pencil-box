@@ -1,13 +1,13 @@
 [package]
 name = "pencil-box"
-version = "0.1.6"
+version = "0.1.7"
 edition = "2021"
 description = "A versatile Rust utility library, inspired by JavaScript's Lodash, providing common helper functions for collections, strings, numbers, and more, with no external dependencies."
 readme = "README.md"
 homepage = "https://github.com/rocketnozzle/pencil-box"
 repository = "https://github.com/rocketnozzle/pencil-box"
 license = "MIT"
-keywords = ["utility", "lodash", "collections", "helpers"]
+keywords = ["utility", "lodash", "array", "strings", "collections"]
 categories = ["development-tools::build-utils"]
 authors = ["rocketnozzle.io"]
 

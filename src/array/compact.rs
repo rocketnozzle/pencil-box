@@ -150,41 +150,82 @@ impl_is_empty_for_numerics!(
     floats: [f32, f64]
 );
 
-/// Compacts a mutable vector by removing all elements that are considered "empty".
+/// 🚮 Compacts a mutable vector by removing all elements that are considered "empty".
 ///
 /// This function iterates through the vector and retains only those elements
 /// for which the `is_empty()` method returns `false`.
 ///
 /// # Type Parameters
-/// - `T`: The type of elements in the vector. `T` must implement the `IsEmpty` trait.
+/// - `T`: The type of elements in the vector. Must implement the [`IsEmpty`] trait.
 ///
 /// # Arguments
 /// - `values`: A mutable reference to the `Vec<T>` to be compacted.
 ///
 /// # Behavior
-/// - Modifies the `values` vector in-place.
-/// - If `values` is empty initially, it remains empty.
-/// - If all elements in `values` are considered empty, the vector will become empty.
-/// - If no elements are considered empty, the vector remains unchanged.
+/// - Modifies the input vector **in-place**, removing elements for which `is_empty()` is true.
+/// - If the vector is initially empty, it remains empty.
+/// - If all elements are empty, the result is an empty vector.
+/// - If no elements are empty, the vector remains unchanged.
 ///
 /// # Performance
-/// This function uses `Vec::retain()`, which operates in-place and is generally
-/// efficient. It iterates over the vector once, moving non-empty elements
-/// to the front and dropping the empty ones. Its complexity is O(N) where N
-/// is the number of elements in the vector, as each element is visited once.
-/// For types where `is_empty()` is O(1) (like primitive types, `String`, `Vec`),
-/// the overall performance is excellent.
+/// - Runs in **O(n)** time, where `n` is the number of elements.
+/// - Uses `Vec::retain()` under the hood — efficient, no reallocations.
+/// - Each element is checked once. For types where `is_empty()` is O(1), overall cost is linear and very fast.
 ///
-/// # Supported Types for `compact`
-/// The `compact` function can be used with any type `T` that implements the `IsEmpty` trait.
-/// Based on the current implementations, this includes:
-/// - `String`
-/// - `&str` (string slices)
-/// - `Vec<T>` (vectors where `T` also implements `IsEmpty`)
-/// - `bool`
-/// - All integer types: `i8`, `i16`, `i32`, `i64`, `i128`, `isize`, `u8`, `u16`, `u32`, `u64`, `u128`, `usize`
-/// - All floating-point types: `f32`, `f64`
-/// - `Option<T>` (optional values where `T` also implements `IsEmpty`)
+/// # Supported Types
+/// This function works with any type that implements the `IsEmpty` trait, such as:
+/// - `String`, `&str`
+/// - All integers and floats (`0`, `0.0` are "empty")
+/// - `bool` (`false` is "empty")
+/// - `Vec<T>` where `T: IsEmpty`
+/// - `Option<T>` where `T: IsEmpty`
+///
+/// # Examples
+///
+/// ### 📜 Remove empty strings
+/// ```
+/// use pencil_box::array::compact::compact;
+/// use pencil_box::traits::IsEmpty;
+///
+/// let mut items = vec!["hello".to_string(), "".to_string(), "world".to_string()];
+/// compact(&mut items);
+/// assert_eq!(items, vec!["hello", "world"]);
+/// ```
+///
+/// ### 📦 Remove empty vectors
+/// ```
+/// let mut data = vec![vec![1], vec![], vec![2, 3]];
+/// compact(&mut data);
+/// assert_eq!(data, vec![vec![1], vec![2, 3]]);
+/// ```
+///
+/// ### 🧹 Remove zero values
+/// ```
+/// let mut nums = vec![0, 1, 0, 2, 3];
+/// compact(&mut nums);
+/// assert_eq!(nums, vec![1, 2, 3]);
+/// ```
+///
+/// ### ❓ Remove `None` and empty `Some`s
+/// ```
+/// let mut opts = vec![Some("hi"), None, Some("")];
+/// compact(&mut opts);
+/// assert_eq!(opts, vec![Some("hi")]);
+/// ```
+///
+/// ### 🔍 Leave non-empty values untouched
+/// ```
+/// let mut flags = vec![true, true, true];
+/// compact(&mut flags);
+/// assert_eq!(flags, vec![true, true, true]);
+/// ```
+///
+/// ### 📭 No-op on empty input
+/// ```
+/// let mut empty: Vec<String> = vec![];
+/// compact(&mut empty);
+/// assert!(empty.is_empty());
+/// ```
 pub fn compact<T: IsEmpty>(values: &mut Vec<T>) {
     values.retain(|v| !v.is_empty());
 }

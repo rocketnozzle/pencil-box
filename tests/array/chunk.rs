@@ -2,6 +2,10 @@
 mod tests {
     use pencil_box::array::chunk::chunk;
 
+    /// Tests chunking a primitive `Vec<i32>` into even-sized groups.
+    ///
+    /// # Expected
+    /// Returns chunks of size 2, with the last chunk possibly smaller.
     #[test]
     fn test_primitive_types() {
         let data = vec![1, 2, 3, 4, 5];
@@ -14,6 +18,10 @@ mod tests {
         );
     }
 
+    /// Tests chunking a vector of owned `String` values.
+    ///
+    /// # Expected
+    /// Preserves data and order with chunking applied correctly.
     #[test]
     fn test_strings() {
         let data = vec!["a".to_string(), "b".to_string(), "c".to_string()];
@@ -30,6 +38,10 @@ mod tests {
         );
     }
 
+    /// Tests chunking a vector of custom struct instances.
+    ///
+    /// # Expected
+    /// Each chunk retains struct integrity and preserves order.
     #[test]
     fn test_structs() {
         #[derive(Clone, Debug, PartialEq)]
@@ -57,6 +69,10 @@ mod tests {
         );
     }
 
+    /// Tests chunking a vector of enum values with different variants.
+    ///
+    /// # Expected
+    /// Enums should be chunked without losing variant fidelity or order.
     #[test]
     fn test_enums() {
         #[derive(Clone, Debug, PartialEq)]
@@ -79,6 +95,10 @@ mod tests {
         );
     }
 
+    /// Tests chunking nested collections like `Vec<Vec<_>>`.
+    ///
+    /// # Expected
+    /// Preserves inner vectors and groups them into outer chunks correctly.
     #[test]
     fn test_collections() {
         let data = vec![vec![1, 2], vec![3, 4], vec![5, 6]];
@@ -92,6 +112,10 @@ mod tests {
         );
     }
 
+    /// Tests the case where the input is an empty vector.
+    ///
+    /// # Expected
+    /// Returns an empty result without errors.
     #[test]
     fn test_empty_input() {
         let data: Vec<i32> = vec![];
@@ -103,6 +127,10 @@ mod tests {
         );
     }
 
+    /// Tests the case where the chunk size is 0.
+    ///
+    /// # Expected
+    /// Returns an error due to invalid input.
     #[test]
     fn test_chunk_size_zero() {
         let data = vec![1, 2, 3];
@@ -114,6 +142,10 @@ mod tests {
         );
     }
 
+    /// Tests the case where the chunk size is larger than the input length.
+    ///
+    /// # Expected
+    /// Returns a single chunk containing the full input vector.
     #[test]
     fn test_chunk_size_larger_than_input() {
         let data = vec![1, 2, 3];

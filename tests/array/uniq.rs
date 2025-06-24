@@ -10,7 +10,9 @@ mod tests {
         (0..len).map(|_| rng.sample(Alphanumeric) as char).collect()
     }
 
-    // i128 tests
+    // -------- i128 Tests --------
+
+    /// Generates a vector of random i128 values with some deliberate duplicates.
     fn generate_random_i128_data(count: usize, seed: u64) -> Vec<i128> {
         let mut rng = StdRng::seed_from_u64(seed);
         let mut data = Vec::with_capacity(count);
@@ -24,6 +26,10 @@ mod tests {
         data
     }
 
+    /// Tests `uniq` with randomly generated i128 values.
+    ///
+    /// # Expected
+    /// All duplicates are removed. Only unique values remain.
     #[test]
     fn test_uniq_with_random_i128() {
         let mut data = generate_random_i128_data(1000, 42);
@@ -32,6 +38,10 @@ mod tests {
         assert_eq!(data.len(), set.len());
     }
 
+    /// Tests `uniq_performant` with randomly generated i128 values.
+    ///
+    /// # Expected
+    /// All duplicates are removed. Only unique values remain.
     #[test]
     fn test_uniq_performant_with_random_i128() {
         let mut data = generate_random_i128_data(1000, 42);
@@ -40,12 +50,17 @@ mod tests {
         assert_eq!(data.len(), set.len());
     }
 
-    // bool tests
+    // -------- Bool Tests --------
+
     fn generate_random_bool_data(count: usize, seed: u64) -> Vec<bool> {
         let mut rng = StdRng::seed_from_u64(seed);
         (0..count).map(|_| rng.gen_bool(0.5)).collect()
     }
 
+    /// Tests `uniq` with a vector of boolean values.
+    ///
+    /// # Expected
+    /// Vector contains at most 2 values: true and/or false.
     #[test]
     fn test_uniq_with_random_bools() {
         let mut data = generate_random_bool_data(1000, 2025);
@@ -55,6 +70,10 @@ mod tests {
         assert!(data.len() <= 2);
     }
 
+    /// Tests `uniq_performant` with a vector of boolean values.
+    ///
+    /// # Expected
+    /// Vector contains at most 2 values: true and/or false.
     #[test]
     fn test_uniq_performant_with_random_bools() {
         let mut data = generate_random_bool_data(1000, 2025);
@@ -64,7 +83,8 @@ mod tests {
         assert!(data.len() <= 2);
     }
 
-    // string tests
+    // -------- String Tests --------
+
     fn generate_random_string_data(count: usize, seed: u64) -> Vec<String> {
         let mut rng = StdRng::seed_from_u64(seed);
         let mut data = Vec::with_capacity(count);
@@ -78,6 +98,10 @@ mod tests {
         data
     }
 
+    /// Tests `uniq` with a vector of random `String` values.
+    ///
+    /// # Expected
+    /// All duplicates are removed, keeping only the first occurrence.
     #[test]
     fn test_uniq_with_random_strings() {
         let mut data = generate_random_string_data(1000, 4242);
@@ -86,6 +110,10 @@ mod tests {
         assert_eq!(data.len(), set.len());
     }
 
+    /// Tests `uniq_performant` with a vector of random `String` values.
+    ///
+    /// # Expected
+    /// All duplicates are removed, keeping only the first occurrence.
     #[test]
     fn test_uniq_performant_with_random_strings() {
         let mut data = generate_random_string_data(1000, 4242);
@@ -94,7 +122,8 @@ mod tests {
         assert_eq!(data.len(), set.len());
     }
 
-    // nested struct tests
+    // -------- Nested Struct Tests --------
+
     #[derive(Debug, Clone, PartialEq, Eq, Hash)]
     struct Profile {
         bio: Option<String>,
@@ -137,6 +166,10 @@ mod tests {
         users
     }
 
+    /// Tests `uniq` with nested user-defined struct values.
+    ///
+    /// # Expected
+    /// All duplicates are removed based on full struct equality.
     #[test]
     fn test_uniq_nested_struct() {
         let mut users = generate_random_nested_users(1000, 8888);
@@ -145,6 +178,10 @@ mod tests {
         assert_eq!(users.len(), set.len());
     }
 
+    /// Tests `uniq_performant` with nested user-defined struct values.
+    ///
+    /// # Expected
+    /// All duplicates are removed based on full struct equality.
     #[test]
     fn test_uniq_performant_nested_struct() {
         let mut users = generate_random_nested_users(1000, 8888);
@@ -153,7 +190,8 @@ mod tests {
         assert_eq!(users.len(), set.len());
     }
 
-    // nested enum tests
+    // -------- Nested Enum Tests --------
+
     #[derive(Debug, Clone, PartialEq, Eq, Hash)]
     enum AuthMethod {
         OAuth(String),
@@ -202,6 +240,10 @@ mod tests {
         users
     }
 
+    /// Tests `uniq` with deeply nested enum-containing struct values.
+    ///
+    /// # Expected
+    /// All duplicates are removed based on structural equality of nested enums.
     #[test]
     fn test_uniq_with_nested_enum_struct() {
         let mut users = generate_enum_users(1000, 5555);
@@ -210,6 +252,10 @@ mod tests {
         assert_eq!(users.len(), set.len());
     }
 
+    /// Tests `uniq_performant` with deeply nested enum-containing struct values.
+    ///
+    /// # Expected
+    /// All duplicates are removed based on structural equality of nested enums.
     #[test]
     fn test_uniq_performant_with_nested_enum_struct() {
         let mut users = generate_enum_users(1000, 5555);
