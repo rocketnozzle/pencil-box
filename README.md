@@ -1,5 +1,7 @@
 # Pencil-Box
 
+[![Rust](https://github.com/rocketnozzle/pencil-box/actions/workflows/rust.yml/badge.svg)](https://github.com/rocketnozzle/pencil-box/actions/workflows/rust.yml)
+
 A high-performance, idiomatic Rust utility crate offering Lodash-style collection and value manipulation functions.
 
 ## 📚 Documentation
