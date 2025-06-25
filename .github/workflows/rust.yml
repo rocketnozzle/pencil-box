@@ -15,7 +15,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build
+    - name: Install Rust stable toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
+    - name: Show Rust version
+      run: rustc --version
+
+    - name: Build Library
       run: cargo build --verbose
-    - name: Run tests (excluding doc tests)
-      run: cargo test --verbose -- --skip-doc-tests
+    - name: Run tests (tests from 'tests/' and excluding doc tests)
+      run: cargo test --tests --verbose -- --skip-doc-tests
