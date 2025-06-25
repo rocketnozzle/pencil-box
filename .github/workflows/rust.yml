@@ -26,5 +26,5 @@ jobs:
 
     - name: Build Library
       run: cargo build --verbose
-    - name: Run tests (tests from 'tests/' and excluding doc tests)
-      run: cargo test --tests --verbose -- --skip-doc-tests
+    - name: Run tests 
+      run: cargo test --tests --verbose
