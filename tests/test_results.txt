@@ -1,0 +1,87 @@
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 77 tests
+test array::chunk::tests::test_chunk_size_zero ... ok
+test array::chunk::tests::test_empty_input ... ok
+test array::chunk::tests::test_chunk_size_larger_than_input ... ok
+test array::chunk::tests::test_collections ... ok
+test array::chunk::tests::test_primitive_types ... ok
+test array::chunk::tests::test_enums ... ok
+test array::chunk::tests::test_strings ... ok
+test array::chunk::tests::test_structs ... ok
+test array::compact::tests::test_bool_is_empty_impl ... ok
+test array::compact::tests::test_compact_all_empty_elements ... ok
+test array::compact::tests::test_compact_bools ... ok
+test array::compact::tests::test_compact_empty_vec ... ok
+test array::compact::tests::test_compact_floats ... ok
+test array::compact::tests::test_compact_ints ... ok
+test array::compact::tests::test_compact_no_empty_elements ... ok
+test array::compact::tests::test_compact_options ... ok
+test array::compact::tests::test_compact_small_ints ... ok
+test array::compact::tests::test_compact_strings ... ok
+test array::compact::tests::test_compact_strings_refs ... ok
+test array::compact::tests::test_compact_usize_isize ... ok
+test array::compact::tests::test_compact_vec_of_vecs ... ok
+test array::compact::tests::test_numeric_is_empty_impls ... ok
+test array::compact::tests::test_option_is_empty_impl ... ok
+test array::compact::tests::test_str_is_empty_impl ... ok
+test array::compact::tests::test_string_is_empty_impl ... ok
+test array::compact::tests::test_vec_is_empty_impl ... ok
+test array::difference::tests::test_empty_array ... ok
+test array::difference::tests::test_empty_others ... ok
+test array::difference::tests::test_with_bools ... ok
+test array::difference::tests::test_with_enums ... ok
+test array::difference::tests::test_with_floats ... ok
+test array::difference::tests::test_with_integers ... ok
+test array::difference::tests::test_with_str_refs ... ok
+test array::difference::tests::test_with_strings ... ok
+test array::difference::tests::test_with_structs ... ok
+test array::drop_end::tests::test_drop_entire_large_vec ... ok
+test array::drop_end::tests::test_drop_exact_length ... ok
+test array::drop_end::tests::test_drop_from_empty_vec ... ok
+test array::drop_end::tests::test_drop_from_singleton_vec ... ok
+test array::drop_end::tests::test_drop_less_than_length ... ok
+test array::drop_end::tests::test_drop_more_than_length ... ok
+test array::drop_end::tests::test_drop_partially_large_vec ... ok
+test array::drop_end::tests::test_drop_strings ... ok
+test array::drop_end::tests::test_drop_zero_elements ... ok
+test array::drop_end::tests::test_drop_zero_on_empty_vec ... ok
+test array::drop_start::tests::test_drop_start_entire_large_vec ... ok
+test array::drop_start::tests::test_drop_start_exact_length ... ok
+test array::drop_start::tests::test_drop_start_from_empty_vec ... ok
+test array::drop_start::tests::test_drop_start_from_singleton_vec ... ok
+test array::drop_start::tests::test_drop_start_less_than_length ... ok
+test array::drop_start::tests::test_drop_start_more_than_length ... ok
+test array::drop_start::tests::test_drop_start_partially_large_vec ... ok
+test array::drop_start::tests::test_drop_start_strings ... ok
+test array::drop_start::tests::test_drop_start_zero_elements ... ok
+test array::drop_start::tests::test_drop_start_zero_on_empty_vec ... ok
+test array::fill_default::tests::test_complex_string ... ok
+test array::fill_default::tests::test_complex_vec_u8 ... ok
+test array::fill_default::tests::test_enum_default ... ok
+test array::fill_default::tests::test_scalar_bool ... ok
+test array::fill_default::tests::test_scalar_i32 ... ok
+test array::fill_default::tests::test_zero_length ... ok
+test array::fill_value::tests::test_complex_string ... ok
+test array::fill_value::tests::test_complex_vec_u8 ... ok
+test array::fill_value::tests::test_enum_value ... ok
+test array::fill_value::tests::test_scalar_bool ... ok
+test array::fill_value::tests::test_scalar_i32 ... ok
+test array::fill_value::tests::test_zero_length ... ok
+test array::uniq::tests::test_uniq_performant_with_random_bools ... ok
+test array::uniq::tests::test_uniq_with_random_bools ... ok
+test array::uniq::tests::test_uniq_performant_with_random_i128 ... ok
+test array::uniq::tests::test_uniq_performant_with_random_strings ... ok
+test array::uniq::tests::test_uniq_performant_with_nested_enum_struct ... ok
+test array::uniq::tests::test_uniq_with_random_i128 ... ok
+test array::uniq::tests::test_uniq_with_random_strings ... ok
+test array::uniq::tests::test_uniq_with_nested_enum_struct ... ok
+test array::uniq::tests::test_uniq_performant_nested_struct ... ok
+test array::uniq::tests::test_uniq_nested_struct ... ok
+
+test result: ok. 77 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
