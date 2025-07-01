@@ -1,6 +1,4 @@
-# Pencil-Box
-
-An idiomatic, high-performance Rust crate inspired by Lodash—packed with everyday utilities to simplify and reduce boilerplate when working with collections, strings, numbers, and more.
+[![Rust](https://github.com/rocketnozzle/pencil-box/actions/workflows/rust.yml/badge.svg)](https://github.com/rocketnozzle/pencil-box/actions/workflows/rust.yml)
 
 ## 📚 Documentation
 
