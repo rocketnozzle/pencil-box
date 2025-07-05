@@ -1,73 +1,68 @@
-/// Creates a new vector of the specified size, filled with clones of the given value.
+/// 🧱 Creates a new vector of the specified size, filled with default values for the type.
 ///
 /// # Type Parameters
-/// - `T`: The type of elements in the vector. Must implement [`Clone`].
+/// - `T`: The type of elements in the vector. Must implement [`Default`] and [`Clone`].
 ///
 /// # Arguments
-/// - `value`: A reference to the value to repeat. This value will be cloned for each element.
 /// - `size`: The number of elements to generate.
 ///
 /// # Returns
-/// A `Vec<T>` of length `size`, where each element is a clone of the provided `value`.
+/// A `Vec<T>` of length `size`, where each element is a clone of `T::default()`.
 ///
 /// # Behavior
 /// - Produces an empty vector if `size == 0`.
-/// - Allocates space for `size` elements and fills them using repeated clones of `value`.
-/// - Supports scalars, strings, vectors, enums, and other types implementing [`Clone`].
+/// - Allocates space for `size` elements on the heap.
+/// - Each element is a clone of the type’s default value, as returned by [`T::default()`].
 ///
 /// # Performance
-/// - ✅ Linear time complexity **O(n)** where `n = size`.
-/// - ✅ Allocates exactly `size` elements on the heap.
-/// - ✅ Efficient and minimal memory overhead.
+/// - ✅ Time complexity: **O(n)** where `n = size`.
+/// - ✅ Space complexity: **O(n)** heap-allocated.
+/// - ✅ Minimal overhead, efficient default initialization.
 /// - 🚫 No in-place mutation; constructs a new vector.
 ///
 /// # Examples
 ///
-/// ## 🔢 Scalar Types
+/// ## 🔢 Primitive Types
 /// ```
-/// use pencil_box::array::fill_value;
+/// use pencil_box::array::fill_default::fill_default;
 ///
-/// let vec = fill_value(&42, 4);
-/// assert_eq!(vec, vec![42, 42, 42, 42]);
-/// ```
+/// let vec: Vec<i32> = fill_default(3);
+/// assert_eq!(vec, vec![0, 0, 0]);
 ///
-/// ## ✅ Boolean
-/// ```
-/// let vec = fill_value(&true, 3);
-/// assert_eq!(vec, vec![true, true, true]);
+/// let vec: Vec<bool> = fill_default(2);
+/// assert_eq!(vec, vec![false, false]);
 /// ```
 ///
 /// ## 🧵 Complex Types
 /// ```
-/// let vec = fill_value(&String::from("hi"), 2);
-/// assert_eq!(vec, vec!["hi".to_string(), "hi".to_string()]);
+/// let vec: Vec<String> = fill_default(2);
+/// assert_eq!(vec, vec![String::new(), String::new()]);
 ///
-/// let vec = fill_value(&vec![1, 2], 3);
-/// assert_eq!(vec, vec![vec![1, 2], vec![1, 2], vec![1, 2]]);
+/// let vec: Vec<Vec<u8>> = fill_default(2);
+/// assert_eq!(vec, vec![vec![], vec![]]);
 /// ```
 ///
-/// ## 🎭 Enum Types
+/// ## 🎭 Enum with Default Variant
 /// ```
-/// #[derive(Debug, PartialEq, Clone)]
+/// #[derive(Debug, PartialEq, Clone, Default)]
 /// enum Status {
-///     Ready,
-///     Error(String),
+///     #[default]
+///     Idle,
+///     Busy,
 /// }
 ///
-/// let vec = fill_value(&Status::Error("x".into()), 2);
-/// assert_eq!(
-///     vec,
-///     vec![Status::Error("x".into()), Status::Error("x".into())]
-/// );
+/// let vec = fill_default::<Status>(3);
+/// assert_eq!(vec, vec![Status::Idle, Status::Idle, Status::Idle]);
 /// ```
 ///
 /// # Panic Safety
-/// - ✅ This function is panic-free under all valid inputs.
+/// ✅ This function is panic-free for all valid `size` inputs.
 ///
 /// # Features
 /// - 📦 No dependencies, pure safe Rust.
-/// - 🧱 Suitable for initializing collections with fixed repeated values.
-/// - 🛠️ Composable with iterator pipelines or collection builders.
+/// - 🧱 Ideal for zero-initialized buffers or defaulted collections.
+/// - 🛠️ Composable with iterator pipelines and higher-level constructors.
+
 pub fn fill_default<T: Clone + Default>(size: usize) -> Vec<T> {
     vec![T::default(); size]
 }

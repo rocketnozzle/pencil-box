@@ -1,8 +1,8 @@
 [package]
 name = "pencil-box"
-version = "0.1.8"
+version = "0.1.9"
 edition = "2021"
-description = "An idiomatic, high-performance Rust crate inspired by Lodash—packed with everyday utilities to simplify and reduce boilerplate when working with collections, strings, numbers, and more."
+description = "A performance-focused, memory-efficient utility library for Rust — built for engineers who care about speed, safety, and maintainability."
 readme = "README.md"
 homepage = "https://github.com/rocketnozzle/pencil-box"
 repository = "https://github.com/rocketnozzle/pencil-box"
