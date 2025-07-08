@@ -1,6 +1,6 @@
 [package]
 name = "pencil-box"
-version = "0.1.9"
+version = "0.1.10"
 edition = "2021"
 description = "A performance-focused, memory-efficient utility library for Rust — built for engineers who care about speed, safety, and maintainability."
 readme = "README.md"

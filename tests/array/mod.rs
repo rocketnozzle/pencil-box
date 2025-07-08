@@ -10,3 +10,4 @@ mod uniq;
 
 mod find_index;
 mod find_last_index;
+mod flatten;

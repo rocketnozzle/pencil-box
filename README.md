@@ -5,6 +5,7 @@
 
 A performance-focused, memory-efficient utility library for Rust — built for engineers who care about speed, safety, and maintainability.
 
+
 ---
 
 > ✨🌟🌟🌟 If you find this project useful, please consider [⭐ starring it on GitHub](https://github.com/rocketnozzle/pencil-box)! 🌟🌟🌟✨
@@ -74,6 +75,7 @@ Each function is currently part of the `array` module. Full documentation with e
 | array | `find_index` | Find the index of the **first** matching element | [Full API Docs](https://docs.rs/pencil-box/latest/pencil_box/array/find/fn.find_index.html) |
 | array | `find_indexes` | Find indices of **all** matching elements | [Full API Docs](https://docs.rs/pencil-box/latest/pencil_box/array/find/fn.find_indexes.html) |
 | array | `find_last_index` | Find the index of the **last** matching element | [Full API Docs](https://docs.rs/pencil-box/latest/pencil_box/array/find/fn.find_last_index.html) |
+| array | `flatten` | Flatten nested array-like structures into a single `Vec<T>` | [Full API Docs](https://docs.rs/pencil-box/latest/pencil_box/array/flatten/fn.flatten.html) |
 | array | `uniq_performant` | Faster deduplication using `AHashSet` | [Full API Docs](https://docs.rs/pencil-box/latest/pencil_box/array/uniq/fn.uniq_performant.html) |
 | array | `uniq` | Remove duplicate elements using `HashSet` | [Full API Docs](https://docs.rs/pencil-box/latest/pencil_box/array/uniq/fn.uniq.html) |
 

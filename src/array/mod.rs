@@ -9,6 +9,7 @@ pub mod uniq;
 pub mod find_index;
 pub mod find_indexes;
 pub mod find_last_index;
+pub mod flatten;
 
 
 
