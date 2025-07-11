@@ -48,10 +48,10 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-pencil-box = "0.1.9"
+pencil-box = "0.1.11"
 ```
 
-> Replace `"0.1.9"` with the latest version from [crates.io](https://crates.io/crates/pencil-box).
+> Replace `"0.1.11"` with the latest version from [crates.io](https://crates.io/crates/pencil-box).
 
 
 Full feature list is available in the crate’s `Cargo.toml`.
